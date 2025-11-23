@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/controllers/response.controller.ts","./src/integrations/geminiclient.ts","./src/interface/gemini.interface.ts","./src/routes/response.routes.ts"],"version":"5.9.3"}
