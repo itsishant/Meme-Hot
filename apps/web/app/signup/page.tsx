@@ -5,13 +5,12 @@ export default function Signup() {
                 <div className="text-white flex justify-center items-center font-sans text-4xl tracking-tight font-semibold">
                     Sign up
                 </div>
-                <div className="mt-6">
+                <div className="mt-6 ">
+                    
                 <input placeholder="email" type="text" className="mt-10 w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-blue-500">
 
                 
                 </input>
-                
-
 
                 <input placeholder="password" type="text" className="mt-10 w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-blue-500">
 
