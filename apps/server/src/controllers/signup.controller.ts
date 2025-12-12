@@ -41,6 +41,7 @@ const createUser = async (req: Request<{}, {}, ISignupData>, res: Response) => {
             success: true,
             messsage: "User created successfully"
         })
+        
 
     } catch (error) {
         console.log("Error while creating user:", error);
