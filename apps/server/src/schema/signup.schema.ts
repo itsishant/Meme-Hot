@@ -1,19 +1,20 @@
 import mongoose from "mongoose";
 
 const signupSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        required: true
-    },
+  email: {
+    type: String,
+    required: true,
+  },
 
-    password: {
-        type: String,
-        required: true
-    }
-})
+  password: {
+    type: String,
+    required: true,
+  },
 
-const signupModel = mongoose.model("signupModel", signupSchema);
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users",
+  }
+});
 
-export {
-    signupModel
-}
+export { signupSchema };

@@ -1,3 +1,3 @@
-export interface IDb{
-    MONGODB_URI: string | undefined;
+export interface IDb {
+  MONGODB_URI: string | undefined;
 }

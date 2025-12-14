@@ -5,11 +5,11 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const config: Gemini = {
-  apiKey: process.env.GEMINI_API_KEY!
+  apiKey: process.env.GEMINI_API_KEY!,
 };
 
 const ai = new GoogleGenAI({
-  apiKey: config.apiKey
+  apiKey: config.apiKey,
 });
 
 export default ai;
