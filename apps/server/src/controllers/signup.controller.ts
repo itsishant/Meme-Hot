@@ -5,7 +5,7 @@ import type { ISignupData } from "../interface/signup.interface.js";
 import { signupZod } from "../utils/zod/signup.js";
 
 import { userCreate } from "../utils/signup/userCreate.utils.js";
-import { jwtSign } from "../utils/jwtSign.utils.js";
+import { jwtSign } from "../utils/token/jwtSign.utils.js";
 import { passwordHash } from "../utils/password/bcrypt.password.utils.js";
 import { checkUserExist } from "../utils/signup/userEmilCheck.utils.js";
 import { success } from "zod";

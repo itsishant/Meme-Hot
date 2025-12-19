@@ -10,6 +10,7 @@ dotenv.config();
 const PORT = process.env.PORT;
 
 import { connectToDatabase } from "./database/connection.js";
+connectToDatabase();
 
 // LLM Routes
 import responseRoutes from "./routes/response.routes.js";
@@ -19,7 +20,9 @@ app.use("/api/v1/response", responseRoutes);
 import signupRouter from "./routes/signup.routes.js";
 app.use("/api/v1/signup", signupRouter);
 
-connectToDatabase();
+// Login Route
+import loginRouter from "./routes/login.routes.js";
+app.use("/api/v1/login", loginRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
