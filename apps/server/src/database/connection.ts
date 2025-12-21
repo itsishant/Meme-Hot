@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import type { IDb } from "../interface/db.interface.js";
-import dotenv from "dotenv"
+import dotenv from "dotenv";
 dotenv.config();
 
 const dbConfig: IDb = {
@@ -10,7 +10,7 @@ const dbConfig: IDb = {
 const connectToDatabase = async () => {
   try {
     if (!dbConfig.MONGODB_URI) {
-        return console.log("MONGODB_URI is not defined in environment variables");
+      return console.log("MONGODB_URI is not defined in environment variables");
     }
 
     await mongoose.connect(dbConfig.MONGODB_URI);
@@ -20,6 +20,4 @@ const connectToDatabase = async () => {
   }
 };
 
-export { 
-    connectToDatabase
-};
+export { connectToDatabase };

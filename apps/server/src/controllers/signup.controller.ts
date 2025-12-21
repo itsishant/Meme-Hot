@@ -1,9 +1,6 @@
 import { type Request, type Response } from "express";
-
 import type { ISignupData } from "../interface/signup.interface.js";
-
 import { signupZod } from "../utils/zod/signup.js";
-
 import { userCreate } from "../utils/signup/userCreate.utils.js";
 import { jwtSign } from "../utils/token/jwtSign.utils.js";
 import { passwordHash } from "../utils/password/bcrypt.password.utils.js";
@@ -22,18 +19,17 @@ const createUser = async (req: Request<{}, {}, ISignupData>, res: Response) => {
         message: "Invalid request data",
       });
     }
-    
+
     const bcryptedPassword = await passwordHash(password);
     req.body.password = bcryptedPassword;
-
 
     const findEmail = await checkUserExist(email);
 
     if (findEmail) {
-        return res.status(409).json({
-            success: false,
-            message: "User with this email already exists"
-        })
+      return res.status(409).json({
+        success: false,
+        message: "User with this email already exists",
+      });
     }
 
     const newUser = await userCreate(req);
@@ -59,7 +55,7 @@ const createUser = async (req: Request<{}, {}, ISignupData>, res: Response) => {
     return res.status(200).json({
       success: true,
       messsage: "User created successfully",
-      token: jwtToken
+      token: jwtToken,
     });
   } catch (error) {
     console.log("Error while creating user:", error);
@@ -71,61 +67,53 @@ const createUser = async (req: Request<{}, {}, ISignupData>, res: Response) => {
 };
 
 const getUserInfo = async (req: Request, res: Response) => {
-    try {
+  try {
+    const userId = req.params.userId;
 
-        const userId = req.params.userId;
-        
-        const userInfo = await getInfo(userId as any);
-        if (!userInfo) {
-            return res.status(404).json({
-                success: false,
-                message: "User not found"
-            })
-        }
-
-        return res.status(200).json({
-            success: true,
-            data: userInfo
-        })
-
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: "Internal Server Error"
-        })
+    const userInfo = await getInfo(userId as any);
+    if (!userInfo) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
     }
-}
+
+    return res.status(200).json({
+      success: true,
+      data: userInfo,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
+};
 
 const deleteUser = async (req: Request, res: Response) => {
-    try {
-        const userId = req.params.userId;
+  try {
+    const userId = req.params.userId;
 
-        const deletion = await deleteUserFunction(userId as any);
+    const deletion = await deleteUserFunction(userId as any);
 
-        if (!deletion) {
-            return res.status(404).json({
-                success: false,
-                message: "User not found"
-            })
-        }
-
-        return res.status(200).json({
-            success: true,
-            message: "User deleted successfully"
-        })
-
-    } catch (error) {
-        console.log(`Errro in deleting user: ${error}`);
-        return res.status(500).json({
-            success: false,
-            message: "Internal Server Error"
-        })
+    if (!deletion) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
     }
-}
 
-export { 
-    createUser,
-    getUserInfo,
-    deleteUser
- };
- 
+    return res.status(200).json({
+      success: true,
+      message: "User deleted successfully",
+    });
+  } catch (error) {
+    console.log(`Errro in deleting user: ${error}`);
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
+};
+
+export { createUser, getUserInfo, deleteUser };

@@ -1,6 +1,6 @@
 export interface ISignupData {
   email: string;
   password: string;
-  userId?: string
-  id?: string
+  userId?: string;
+  id?: string;
 }

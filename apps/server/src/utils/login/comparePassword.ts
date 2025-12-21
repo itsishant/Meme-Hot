@@ -1,15 +1,11 @@
 import bcrypt from "bcrypt";
 const comparePassword = async (password: string, hashedPassword: string) => {
-    try {
+  try {
+    const check = await bcrypt.compare(password, hashedPassword);
+    return check;
+  } catch (error) {
+    throw new Error("Compare password failed");
+  }
+};
 
-        const check = await bcrypt.compare(password, hashedPassword);
-        return check;
-
-    } catch (error) {
-        throw new Error("Compare password failed");
-    }
-}
-
-export {
-    comparePassword
-}
+export { comparePassword };

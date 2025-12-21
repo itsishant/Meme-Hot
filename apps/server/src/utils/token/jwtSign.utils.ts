@@ -5,11 +5,11 @@ dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
 if (!JWT_SECRET) {
-    console.log("JWT_SECRET is not defined")
+  console.log("JWT_SECRET is not defined");
 }
 const jwtSign = (userId: string) => {
   const signNewToken = jwt.sign({ id: userId }, JWT_SECRET!, {
-    expiresIn: '7d',
+    expiresIn: "7d",
   });
   return signNewToken;
 };
