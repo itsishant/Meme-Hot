@@ -12,6 +12,7 @@ const createSubscription = async (
       category,
       planType,
       amount,
+      
       currency,
       paymentMethod,
       autoRenew,
