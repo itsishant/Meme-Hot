@@ -20,7 +20,7 @@ const createSubscription = async (
       remindaerDaysBefore,
     } = req.body;
 
-    if (!req.body) {
+    if ( !appName || !category || !planType || !amount || !currency || !paymentMethod || autoRenew === undefined || !startDate || !nextBillingDate || remindaerDaysBefore === undefined ) {
         return res.status(400).json({
             success: false,
             message: "Invalid input"
