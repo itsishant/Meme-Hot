@@ -1,10 +1,8 @@
-import { type Request } from "express"  
-import { Subscription } from "../../models/subscription.model.js"
-const createSubscriptionData = async (req: Request) => {
-    const create = await Subscription.create(req.body);
-    return create;
-}
+import { Subscription } from "../../models/subscription.model.js";
 
-export {
-    createSubscriptionData
-}
+const createSubscriptionData = async (data: any) => {
+  const create = await Subscription.create(data);
+  return create;
+};
+
+export { createSubscriptionData };

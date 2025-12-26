@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(cors());
 dotenv.config();
 
-const PORT = process.env.PORT;
+const PORT = 51733;
 
 import { connectToDatabase } from "./database/connection.js";
 connectToDatabase();
@@ -22,8 +22,13 @@ app.use("/api/v1/signup", signupRouter);
 
 // Login Route
 import loginRouter from "./routes/login.routes.js";
+console.log("Subscription router loaded:", subscriptionRouter);
 app.use("/api/v1/login", loginRouter);
 
-app.listen(PORT, () => {
+// Subscription Routes
+import subscriptionRouter from "./routes/subscription.routes.js";
+app.use("/api/v1/subscription", subscriptionRouter);
+
+app.listen(51733, () => {
   console.log(`Server is running on port ${PORT}`);
 });

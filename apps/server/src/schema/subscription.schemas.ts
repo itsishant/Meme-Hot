@@ -82,6 +82,10 @@ const subscriptionSchema = new mongoose.Schema({
     default: Date.now,
   },
 
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+  },
+
   isdeleted: {
     type: Boolean,
     default: false,

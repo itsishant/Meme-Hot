@@ -1,0 +1,25 @@
+import { Router } from "express";
+import { middlewareAuthentication } from "../authentication/middleware.authentication.js";
+import {
+  createSubscription,
+  deleteSubscription,
+  getSubscription,
+  updateSubscription,
+} from "../controllers/subscription.controller.js";
+
+const router = Router();
+
+router
+  .route("/create-subscription")
+  .post(middlewareAuthentication, createSubscription);
+router
+  .route("/get-subscription/:id")
+  .get(middlewareAuthentication, getSubscription);
+router
+  .route("/update-subscription/:id")
+  .put(middlewareAuthentication, updateSubscription);
+router
+  .route("/delete-subscription/:id")
+  .delete(middlewareAuthentication, deleteSubscription);
+
+export default router;

@@ -1,6 +1,7 @@
 import { Types } from "mongoose";
 
 export interface ISubscription {
+  id: string;
   userId: Types.ObjectId;
   appName: string;
   category:

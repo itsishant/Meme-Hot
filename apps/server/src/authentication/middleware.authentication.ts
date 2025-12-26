@@ -31,13 +31,18 @@ const middlewareAuthentication = (
       });
     }
 
-    const verify = jwt.verify(token, JWT_SECRET!);
+    const verify = jwt.verify(token, JWT_SECRET!) as any;
     if (!verify) {
       return res.status(401).json({
         success: false,
         message: "Unauthorized: Token verification failed",
       });
     }
+
+    (req as any).user = {
+      id: verify.id || verify.userId || verify._id,
+      email: verify.email,
+    };
 
     next();
   } catch (error) {
